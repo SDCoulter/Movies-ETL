@@ -1,7 +1,5 @@
 # Data Files Do Not Upload
-movies_metadata.csv
-ratings.csv
-wikipedia-movies.json
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
