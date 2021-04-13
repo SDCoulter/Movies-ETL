@@ -46,7 +46,28 @@ except Exception as e:
 
 ## Challenge - Deliverable 4
 
---missing
+**Create the Movie Database** - here we loaded the merged DataFrame table into a local SQL database server, as well as the data from `ratings.csv`. Again we adapted our module code to fit our function that we were able to then call by passing the file paths into. Due to the size of the `ratings.csv` file we had to import it to the SQL server in chunks, this was done with the following:
+
+```py
+for data in pd.read_csv(f'Resources/ratings.csv', chunksize=1000000):
+      # Import the data chunk.
+      data.to_sql(name='ratings', con=engine, if_exists='append')
+```
+
+Which looped through the data one chunk at a time and only imported that chunk each iteration. We also added a bit of code to track how long this process took, which gave us the security of knowing that the process was taking place. Here's the readout from our loop:
+
+![ratings.csv Import Readout](Images/ratings_import_readout.png)
+
+Once the data was imported to the SQL server we were able to run queries to test its functionality and to see if the import had been a success. We checked how many rows each new table had with the following queries, and the outputs are below.
+
+```sql
+SELECT COUNT(*) FROM movies;
+SELECT COUNT(*) FROM ratings;
+```
+
+![Movies Row COUNT Query](Resources/movies_query.png)
+
+![Rating Row COUNT Query](Resources/ratings_query.png)
 
 ## Context
 
