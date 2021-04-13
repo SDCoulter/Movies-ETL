@@ -2,7 +2,7 @@
 
 ## Challenge - Overview
 
-The goal of the module was to create an SQL database from three datasets, by combining their data into one main table. (We also imported other data into the SQL database, but the focus was on the main movie data table). We read in the data, performed analysis on it, cleaned it, combined it, and exported it to an SQL database we created. You can see this progression and the code behind the process ![here](MODULE_data_analysis.ipynb). Below I detail the steps we took to follow the Extract, Transform, and Load process, as well as the challenge deliverables.
+The goal of the module was to create an SQL database from three datasets, by combining their data into one main table. (We also imported other data into the SQL database, but the focus was on the main movie data table). We read in the data, performed analysis on it, cleaned it, combined it, and exported it to an SQL database we created. You can see this progression and the code behind the process [here](MODULE_data_analysis.ipynb). Below I detail the steps we took to follow the Extract, Transform, and Load process, as well as the challenge deliverables.
 
 - **EXTRACT** - Through the course of the module we read in three movie datasets from different sources: Wikipedia movie data in JSON format, Kaggle movie data in CSV format, and MovieLens rating data (from Kaggle) also in CSV format.
 - **TRANSFORM** - The bulk of the module was spent transforming the data into a usable format. The first focus was on the Wiki movie data that we transformed and cleaned up before making into a DataFrame. We removed unneeded columns and changed the data types to reflect the data they held, so we could interact with them properly. Once we had transformed the data to our liking, we converted all the raw data to DataFrames to ready for loading into the SQL database. We also joined the data into one conducive table to load only the required data into the database.
@@ -12,7 +12,7 @@ The goal of the module was to create an SQL database from three datasets, by com
 
 **Write and ETL Function to Read Three Data Files** - we created a function to read in the three datasets we were provided, by passing in the filepaths/filenames as arguments.
 
-```python
+```py
 def extract_transform_load(wiki_data, kaggle_data, rating_data):
     # Read in the Kaggle metadata and MovieLens ratings CSV files as Pandas DataFrames.
     kaggle_metadata = pd.read_csv(kaggle_data, low_memory=False)
