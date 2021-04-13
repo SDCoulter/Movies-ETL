@@ -10,7 +10,7 @@ The goal of the module was to create an SQL database from three datasets, by com
 
 ## Challenge - Deliverable 1
 
-**Write and ETL Function to Read Three Data Files** - we created a function to read in the three datasets we were provided, by passing in the filepaths/filenames as arguments.
+**Write and ETL Function to Read Three Data Files** - we created a function to read in the three datasets we were provided, by passing in the file paths/filenames as arguments.
 
 ```py
 def extract_transform_load(wiki_data, kaggle_data, rating_data):
@@ -28,11 +28,21 @@ def extract_transform_load(wiki_data, kaggle_data, rating_data):
 
 ## Challenge - Deliverable 2
 
---missing
+**Extract and Transform the Wikipedia Data** - we transformed the Wikipedia movie data with our starting off point being the function we created in Deliverable 1. This followed a lot of the module with the focus being on understanding the code and learning to refactor it. The added section that was new was the `try-except` block we were tasked with adding. This block would display and name the error if the code was unable to find the regex query we passed, or had issues with dropping the duplicate rows.
+
+```py
+try:
+    wiki_movies_df['imdb_id'] = wiki_movies_df['imdb_link'].str.extract(r'(tt\d{7})')
+    wiki_movies_df.drop_duplicates(subset='imdb_id', inplace=True)        
+except Exception as e:
+    print(f'There was an error of type: {e}')
+```
 
 ## Challenge - Deliverable 3
 
---missing
+**Extract and Transform the Kaggle data** - this deliverable took the function to the next level by including our transformation of the Kaggle data too, and the merging of the tables into one main cohesive, informative DataFrame. We also renamed and rearranged the columns to best inform the reader of their use. Again, this was an experiment in refactoring the code from the module to prove understanding and confidence with our work. You can see an excerpt of our `movies_with_ratings_df` merged DataFrame below:
+
+![Movie Data with Ratings DataFrame](Images/movies_with_ratings_df.png)
 
 ## Challenge - Deliverable 4
 
